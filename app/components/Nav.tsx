@@ -1,31 +1,36 @@
-'use client'
+"use client";
 
 /* Core */
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 /* Instruments */
-import styles from '../styles/layout.module.css'
+import styles from "../styles/layout.module.css";
+
+/* Application Routes */
+import { ROUTES } from "../routes";
 
 export const Nav = () => {
-  const pathname = usePathname()
+  const pathname: string = usePathname();
 
   return (
     <nav className={styles.nav}>
       <Link
-        className={`${styles.link} ${pathname === '/' ? styles.active : ''}`}
-        href="/"
+        className={`${styles.link} ${
+          pathname === ROUTES.HOME ? styles.active : ""
+        }`}
+        href={ROUTES.HOME}
       >
         Home
       </Link>
       <Link
         className={`${styles.link} ${
-          pathname === '/verify' ? styles.active : ''
+          pathname === ROUTES.VERIFY ? styles.active : ""
         }`}
-        href="/verify"
+        href={ROUTES.VERIFY}
       >
         Verify
       </Link>
     </nav>
-  )
-}
+  );
+};
